@@ -44,5 +44,4 @@ public class PageObject implements IPageObject {
     public WebPageObject getWebPO() {
         return (WebPageObject)somePageObject;
     }
-
 }

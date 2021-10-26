@@ -1,26 +1,20 @@
 package setup;
 
-import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.WatchEvent;
 import java.util.Properties;
 import javax.imageio.ImageIO;
-import org.opencv.core.Core;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
-import pageObjects.NativePageObject;
 import pageObjects.PageObject;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
-import pageObjects.WebPageObject;
 
 
 public class BaseTest implements IDriver {
@@ -69,7 +63,6 @@ public class BaseTest implements IDriver {
         capabilities.setCapability("browserName", browserName);
         capabilities.setCapability("chromedriverDisableBuildCheck","true");
 
-        //capabilities.setCapability("chromeOptions", ImmutableMap.of("w3c", false));
 
         try {
             appiumDriver = new AppiumDriver(new URL(System.getProperty("ts.appium")), capabilities);
@@ -85,16 +78,6 @@ public class BaseTest implements IDriver {
     private void setPageObject(String appType, AppiumDriver appiumDriver) throws Exception {
         po = new PageObject(appType, appiumDriver);
     }
-
-
-
-   /* public static byte[] getBase64ByteFormatOfImage(String imgName)
-                                throws URISyntaxException, IOException {
-        URL refImgUrl =
-            ImageUtils.class.getClassLoader().getResource(imgName);
-        File refImgFile = Paths.get(refImgUrl.toURI()).toFile();
-        return Files.readAllBytes(refImgFile.toPath());
-    }*/
 
 
     public byte[] partialImage() throws IOException {
