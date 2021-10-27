@@ -7,10 +7,10 @@
 ## How to run tests for the native Android EPAMTestApp application
 
 1.  Open terminal in IDE
-2.  Use command `mvn test -P native`
+2.  Use command `mvn clean test -P native`
 
 ## How to run tests for Android web application
 
 1.  Open terminal in IDE
-2.  Use command `mvn test -P web`
+2.  Use command `mvn clean test -P web`
 
