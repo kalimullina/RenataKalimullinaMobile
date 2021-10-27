@@ -37,7 +37,7 @@ public class WebPageObject extends PageObject {
     public int verifyRelevantResults(String keyword) {
         int countRelevantResults = 0;
         for (WebElement pageTitle : pageTitles)
-            if ( pageTitle.getText().contains(keyword))
+            if (pageTitle.getText().contains(keyword))
                 countRelevantResults++;
         return countRelevantResults;
     }

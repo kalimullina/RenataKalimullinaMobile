@@ -6,11 +6,9 @@ import entities.User;
 import java.io.IOException;
 import org.testng.annotations.Test;
 import setup.BaseTest;
-import org.opencv.core.*;
+
 
 public class nativeMobileTests extends BaseTest {
-    static {System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
-
 
     @Test(groups = {"native"}, description = "This simple test just click on the Sign In button")
     public void simpleNativeTest()
