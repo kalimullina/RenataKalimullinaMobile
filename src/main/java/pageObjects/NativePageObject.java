@@ -4,12 +4,14 @@ import entities.User;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class NativePageObject extends PageObject {
 
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/email_sign_in_button")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@label='Sign In']")
     WebElement signInBtn;
 
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/register_button")

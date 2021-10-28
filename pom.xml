@@ -25,6 +25,11 @@
             <version>3.20.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -37,9 +42,10 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <systemPropertyVariables>
-                        <ts.appium>http://localhost:4723/wd/hub</ts.appium>
-                    </systemPropertyVariables>
+                    <!--<systemPropertyVariables>
+                        &lt;!&ndash;<ts.appium>http://localhost:4723/wd/hub</ts.appium>&ndash;&gt;
+                        <ts.appium>https://EPM-TSTF:${token}@mobilecloud.epam.com/wd/hub</ts.appium>
+                    </systemPropertyVariables>-->
                 </configuration>
             </plugin>
             <plugin>
@@ -52,6 +58,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <!--<properties>
+        <token>de669071-644c-4fdb-9fad-293f8decc3d2</token>
+    </properties>-->
 
     <profiles>
         <profile>
@@ -71,6 +81,46 @@
             </activation>
             <properties>
                 <suite.file>./src/test/resources/webTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>iosWebCloud</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/iosWebCloudTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>androidWebCloud</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/androidWebCloudTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>iosNativeCloud</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/iosNativeCloudTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>androidNativeCloud</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/androidNativeCloudTNG.xml</suite.file>
             </properties>
         </profile>
     </profiles>

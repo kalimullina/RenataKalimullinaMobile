@@ -16,6 +16,8 @@ public class nativeMobileTests extends BaseTest {
         getPo().getWelement("signInBtn").click();
 
 
+
+
         /*byte[] screenshot = Base64.encodeBase64(getDriver().getScreenshotAs(OutputType.BYTES));
         byte[] partialImage = Base64.encodeBase64(partialImage());
         OccurrenceMatchingResult result = getDriver()
@@ -38,8 +40,9 @@ public class nativeMobileTests extends BaseTest {
         System.out.println("Simplest Android native test done");
     }
 
-    @Test(groups = {"native"}, description = "This test register a new account and then sign in")
+    /*@Test(groups = {"native"}, description = "This test register a new account and then sign in")
     public void nativeTestWithNewAccount() {
+
 
         //Register a new account
         getPo().getNativePO().registerUser(User.ROMAN, getDriver());
@@ -50,6 +53,6 @@ public class nativeMobileTests extends BaseTest {
         assertThat(getPo().getNativePO().getTittleNativeApp())
             .as("The title of user account was wrong")
             .isEqualTo(property.getProperty("titleOfNativeApp"));
-    }
+    }*/
 
 }

@@ -5,6 +5,9 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 import javax.imageio.ImageIO;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -15,6 +18,8 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
+
+import static java.lang.String.format;
 
 
 public class BaseTest implements IDriver {
@@ -31,18 +36,25 @@ public class BaseTest implements IDriver {
         return po;
     }
 
-    @Parameters({"platformName","appType","deviceName","browserName","app"})
+    @Parameters({"platformName","appType","deviceName","udid","browserName","app","appPackage","appActivity","bundleId"})
     @BeforeMethod(alwaysRun = true)
-    public void setUp(String platformName, String appType, String deviceName, @Optional("") String browserName, @Optional("") String app) throws Exception {
-        System.out.println("Before: app type - "+appType);
-        setAppiumDriver(platformName, deviceName, browserName, app);
-        setPageObject(appType, appiumDriver);
-
+    public void setUp(String platformName,
+                      String appType,
+                      @Optional("") String deviceName,
+                      @Optional("") String udid,
+                      @Optional("") String browserName,
+                      @Optional("") String app,
+                      @Optional("") String appPackage,
+                      @Optional("") String appActivity,
+                      @Optional("") String bundleId
+    ) throws Exception {
         property = new Properties();
         file = new FileInputStream("src/test/resources/test.properties");
         property.load(file);
 
-
+        System.out.println("Before: app type - "+appType);
+        setAppiumDriver(platformName, deviceName, udid, browserName, app, appPackage, appActivity, bundleId);
+        setPageObject(appType, appiumDriver);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -52,21 +64,33 @@ public class BaseTest implements IDriver {
         file.close();
     }
 
-    private void setAppiumDriver(String platformName, String deviceName, String browserName, String app){
+    private void setAppiumDriver(String platformName, String deviceName, String udid, String browserName, String app, String appPackage, String appActivity, String bundleId){
         DesiredCapabilities capabilities = new DesiredCapabilities();
         //mandatory Android capabilities
         capabilities.setCapability("platformName",platformName);
         capabilities.setCapability("deviceName",deviceName);
+        capabilities.setCapability("udid", udid);
 
         if(app.endsWith(".apk")) capabilities.setCapability("app", (new File(app)).getAbsolutePath());
 
         capabilities.setCapability("browserName", browserName);
         capabilities.setCapability("chromedriverDisableBuildCheck","true");
 
+        // Capabilities for test of Android native app on EPAM Mobile Cloud
+        capabilities.setCapability("appPackage",appPackage);
+        capabilities.setCapability("appActivity",appActivity);
+
+        // Capabilities for test of iOS native app on EPAM Mobile Cloud
+        capabilities.setCapability("bundleId",bundleId);
+
+        /*capabilities.setCapability("unicodeKeyboard", "true");
+        capabilities.setCapability("resetKeyboard", "true");*/
+
 
         try {
-            appiumDriver = new AppiumDriver(new URL(System.getProperty("ts.appium")), capabilities);
-        } catch (MalformedURLException e) {
+            String token = URLEncoder.encode(property.getProperty("token"), StandardCharsets.UTF_8.name());
+            appiumDriver = new AppiumDriver(new URL(format("https://EPM-TSTF:%s@mobilecloud.epam.com/wd/hub", token)), capabilities);
+        } catch (MalformedURLException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
@@ -87,4 +111,10 @@ public class BaseTest implements IDriver {
         ImageIO.write(originalImage, "jpg", baos);
         return baos.toByteArray();
     }
+
+
+
+
+
+
 }
