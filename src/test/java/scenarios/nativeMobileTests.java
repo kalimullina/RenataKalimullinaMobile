@@ -42,7 +42,7 @@ public class nativeMobileTests extends BaseTest {
     public void nativeTestWithNewAccount() {
 
         //Register a new account
-        getPo().getNativePO().registerUser(User.ROMAN, getDriver());
+        getPo().getNativePO().registerUser(User.ROMAN);
 
         //Login as the new user
         getPo().getNativePO().loginAsUser(User.ROMAN);

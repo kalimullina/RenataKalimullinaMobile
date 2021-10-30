@@ -44,7 +44,7 @@ public class NativePageObject extends PageObject {
         PageFactory.initElements( new AppiumFieldDecorator(appiumDriver), this);
     }
 
-    public void registerUser(User user, AppiumDriver appiumDriver) {
+    public void registerUser(User user) {
         registerBtn.click();
         registrationEmailTextField.sendKeys(user.getEmail());
         registrationUsernameTextField.sendKeys(user.getUsername());
