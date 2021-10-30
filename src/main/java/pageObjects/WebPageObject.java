@@ -13,7 +13,7 @@ public class WebPageObject extends PageObject {
     @FindBy(css = "[name='q']")
     WebElement searchTextField;
 
-    @FindBy(css = "[class='q8U8x MBeuO ynAwRc PpBGzd YcUVQe']")
+    @FindBy(css = "[role='heading'] > div")
     List<WebElement> pageTitles;
 
     public WebPageObject(AppiumDriver appiumDriver) {
@@ -37,8 +37,10 @@ public class WebPageObject extends PageObject {
     public int verifyRelevantResults(String keyword) {
         int countRelevantResults = 0;
         for (WebElement pageTitle : pageTitles)
-            if (pageTitle.getText().contains(keyword))
+            if (pageTitle.getText().contains(keyword)) {
                 countRelevantResults++;
+                System.out.println(pageTitle.getText());
+            }
         return countRelevantResults;
     }
 }
