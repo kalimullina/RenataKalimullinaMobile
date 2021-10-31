@@ -30,6 +30,11 @@
             <artifactId>lombok</artifactId>
             <version>1.18.10</version>
         </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>4.2.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -42,10 +47,6 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <!--<systemPropertyVariables>
-                        &lt;!&ndash;<ts.appium>http://localhost:4723/wd/hub</ts.appium>&ndash;&gt;
-                        <ts.appium>https://EPM-TSTF:${token}@mobilecloud.epam.com/wd/hub</ts.appium>
-                    </systemPropertyVariables>-->
                 </configuration>
             </plugin>
             <plugin>
@@ -58,10 +59,6 @@
             </plugin>
         </plugins>
     </build>
-
-    <!--<properties>
-        <token>de669071-644c-4fdb-9fad-293f8decc3d2</token>
-    </properties>-->
 
     <profiles>
         <profile>
