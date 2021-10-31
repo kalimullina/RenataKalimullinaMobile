@@ -1,5 +1,6 @@
 package setup;
 
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -83,9 +84,7 @@ public class BaseTest implements IDriver {
         // Capabilities for test of iOS native app on EPAM Mobile Cloud
         capabilities.setCapability("bundleId",bundleId);
 
-        /*capabilities.setCapability("unicodeKeyboard", "true");
-        capabilities.setCapability("resetKeyboard", "true");*/
-
+        capabilities.setCapability("appium:chromeOptions", ImmutableMap.of("w3c", false));
 
         try {
             String token = URLEncoder.encode(property.getProperty("token"), StandardCharsets.UTF_8.name());
@@ -103,7 +102,6 @@ public class BaseTest implements IDriver {
         po = new PageObject(appType, appiumDriver);
     }
 
-
     public byte[] partialImage() throws IOException {
         File file = new File("src/main/resources/partialImage.JPG");
         BufferedImage originalImage = ImageIO.read(file);
@@ -111,10 +109,4 @@ public class BaseTest implements IDriver {
         ImageIO.write(originalImage, "jpg", baos);
         return baos.toByteArray();
     }
-
-
-
-
-
-
 }

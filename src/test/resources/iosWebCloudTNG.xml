@@ -2,7 +2,7 @@
 
 <suite name="iOS web mobile testing suite for EPAM mobile cloud">
     <parameter name="appType" value="web"></parameter>
-    <parameter name="udid" value="iPhone 12 Mini"></parameter>
+    <parameter name="udid" value="00008030-001C54420C09802E"></parameter>
     <parameter name="platformName" value="iOS"></parameter>
     <parameter name="browserName" value="Safari"></parameter>
     <test name="iOS cloud Web tests">

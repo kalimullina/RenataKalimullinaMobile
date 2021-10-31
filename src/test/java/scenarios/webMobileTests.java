@@ -10,7 +10,7 @@ import setup.BaseTest;
 
 public class webMobileTests extends BaseTest {
 
-    /*@Test(groups = {"web"}, description = "Make sure that we've opened IANA homepage")
+    @Test(groups = {"web"}, description = "Make sure that we've opened IANA homepage")
     public void simpleWebTest() throws InterruptedException {
         getDriver().get("http://iana.org"); // open IANA homepage
 
@@ -24,7 +24,7 @@ public class webMobileTests extends BaseTest {
 
         // Log that test finished
         System.out.println("Site opening done");
-    }*/
+    }
 
     @Test(groups = {"web"}, description = "Open google search and search by the word «EPAM»")
     public void searchByWordEPAMTest() throws InterruptedException {

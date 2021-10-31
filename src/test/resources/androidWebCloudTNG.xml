@@ -2,7 +2,7 @@
 
 <suite name="Android web mobile testing suite for EPAM mobile cloud">
   <parameter name="appType" value="web"></parameter>
-  <parameter name="deviceName" value="Honor 8X"></parameter>
+  <parameter name="deviceName" value="Google Pixel 4"></parameter>
   <parameter name="platformName" value="Android"></parameter>
   <parameter name="browserName" value="Chrome"></parameter>
   <test name="Android cloud Web tests">

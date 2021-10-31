@@ -2,13 +2,13 @@
 
 <suite name="iOS native mobile testing suite for EPAM mobile cloud">
   <parameter name="appType" value="native"></parameter>
-  <parameter name="udid" value="iPhone 12 Mini"></parameter>
+  <parameter name="udid" value="00008030-001C54420C09802E"></parameter>
   <parameter name="platformName" value="iOS"></parameter>
   <parameter name="bundleId" value="com.epam.EPAMTestApp.ii"></parameter>
   <test name="iOS cloud Native tests">
     <groups>
       <run>
-        <include name="web"/>
+        <include name="native"/>
       </run>
     </groups>
     <packages>

@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Android native mobile testing suite for EPAM mobile cloud">
   <parameter name="appType" value="native"></parameter>
-  <parameter name="deviceName" value="Honor 8X"></parameter>
+  <parameter name="deviceName" value="Google Pixel 4"></parameter>
   <parameter name="platformName" value="Android"></parameter>
   <parameter name="appPackage" value="platkovsky.alexey.epamtestapp"></parameter>
   <parameter name="appActivity" value="activities.LoginActivity"></parameter>

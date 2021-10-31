@@ -2,7 +2,7 @@ package entities;
 
 public enum User {
 
-    ROMAN("user@user", "Roman", "1234567890");
+    ROMAN("user@Renata", "Roman", "1234567890");
 
     private final String email;
     private final String username;
