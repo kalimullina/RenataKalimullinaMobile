@@ -37,9 +37,6 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <systemPropertyVariables>
-                        <ts.appium>http://localhost:4723/wd/hub</ts.appium>
-                    </systemPropertyVariables>
                 </configuration>
             </plugin>
             <plugin>
@@ -71,6 +68,46 @@
             </activation>
             <properties>
                 <suite.file>./src/test/resources/webTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>iosWebCloud</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/iosWebCloudTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>androidWebCloud</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/androidWebCloudTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>iosNativeCloud</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/iosNativeCloudTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>androidNativeCloud</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/androidNativeCloudTNG.xml</suite.file>
             </properties>
         </profile>
     </profiles>

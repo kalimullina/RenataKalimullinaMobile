@@ -1,6 +1,7 @@
 package pageObjects;
 
 import io.appium.java_client.AppiumDriver;
+import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -16,6 +17,7 @@ public class WebPageObject extends PageObject {
     @FindBy(css = "[role='heading'] > div")
     List<WebElement> pageTitles;
 
+
     public WebPageObject(AppiumDriver appiumDriver) {
         PageFactory.initElements(appiumDriver, this);
     }
@@ -29,9 +31,12 @@ public class WebPageObject extends PageObject {
         );
     }
 
-    public void makeSearchUsingKeyword(String keyword) {
+    public void makeSearchUsingKeyword(AppiumDriver appiumDriver, String keyword) throws InterruptedException {
         searchTextField.sendKeys(keyword);
-        searchTextField.sendKeys("\n");
+        searchTextField.submit();
+        new WebDriverWait(appiumDriver, 10).until(
+            wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete")
+        );
     }
 
     public int verifyRelevantResults(String keyword) {
@@ -42,5 +47,9 @@ public class WebPageObject extends PageObject {
                 System.out.println(pageTitle.getText());
             }
         return countRelevantResults;
+    }
+
+    public int getRelevantResultAmount(){
+        return pageTitles.size();
     }
 }

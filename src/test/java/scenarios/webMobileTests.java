@@ -27,17 +27,17 @@ public class webMobileTests extends BaseTest {
     }*/
 
     @Test(groups = {"web"}, description = "Open google search and search by the word «EPAM»")
-    public void searchByWordEPAMTest() {
+    public void searchByWordEPAMTest() throws InterruptedException {
 
         //Go to a Google search page
         getPo().getWebPO().openGoogleSearchPage(getDriver());
 
         //Make a search using keyword ‘EPAM’
-        getPo().getWebPO().makeSearchUsingKeyword(property.getProperty("searchKeyword"));
+        getPo().getWebPO().makeSearchUsingKeyword(getDriver(), property.getProperty("searchKeyword"));
 
         //Make sure that there are some relevant results
-        assertThat(getPo().getWebPO().verifyRelevantResults(property.getProperty("searchKeyword")))
+       assertThat(getPo().getWebPO().verifyRelevantResults(property.getProperty("searchKeyword")))
             .as("The relevant results for a keyword were wrong. No relevant results")
-            .isNotZero();
+            .isEqualTo(getPo().getWebPO().getRelevantResultAmount());
     }
 }
