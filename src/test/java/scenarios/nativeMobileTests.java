@@ -1,8 +1,10 @@
 package scenarios;
 
+import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import entities.User;
+import io.restassured.specification.RequestSpecification;
 import java.io.IOException;
 import org.testng.annotations.Test;
 import setup.BaseTest;
@@ -39,6 +41,16 @@ public class nativeMobileTests extends BaseTest {
 
     @Test(groups = {"native"}, description = "This test register a new account and then sign in")
     public void nativeTestWithNewAccount() {
+
+
+        RequestSpecification requestSpecification = given()
+            .header("Authorization", property.getProperty("token"))
+            .param("bid")
+            .param("file")
+            .param("fileName")
+            .param("contentType")
+
+
 
         //Register a new account
         getPo().getNativePO().registerUser(User.ROMAN);

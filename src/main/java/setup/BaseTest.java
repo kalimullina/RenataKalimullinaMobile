@@ -30,6 +30,8 @@ public class BaseTest implements IDriver {
     FileInputStream file;
     protected Properties property;
 
+    public BaseTest() {}
+
     @Override
     public AppiumDriver getDriver() { return appiumDriver; }
 
