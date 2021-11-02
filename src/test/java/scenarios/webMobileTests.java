@@ -38,6 +38,6 @@ public class webMobileTests extends BaseTest {
         //Make sure that there are some relevant results
        assertThat(getPo().getWebPO().verifyRelevantResults(property.getProperty("searchKeyword")))
             .as("The relevant results for a keyword were wrong. No relevant results")
-            .isNotZero();
+            .isEqualTo(getPo().getWebPO().getRelevantResultAmount());
     }
 }

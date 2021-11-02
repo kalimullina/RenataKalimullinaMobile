@@ -101,12 +101,4 @@ public class BaseTest implements IDriver {
     private void setPageObject(String appType, AppiumDriver appiumDriver) throws Exception {
         po = new PageObject(appType, appiumDriver);
     }
-
-    public byte[] partialImage() throws IOException {
-        File file = new File("src/main/resources/partialImage.JPG");
-        BufferedImage originalImage = ImageIO.read(file);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(originalImage, "jpg", baos);
-        return baos.toByteArray();
-    }
 }

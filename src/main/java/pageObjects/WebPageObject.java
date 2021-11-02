@@ -1,6 +1,7 @@
 package pageObjects;
 
 import io.appium.java_client.AppiumDriver;
+import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -44,5 +45,9 @@ public class WebPageObject extends PageObject {
             if (pageTitle.getText().contains(keyword))
                 countRelevantResults++;
         return countRelevantResults;
+    }
+
+    public int getRelevantResultAmount(){
+        return pageTitles.size();
     }
 }
